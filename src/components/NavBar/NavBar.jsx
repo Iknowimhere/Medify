@@ -15,11 +15,7 @@ const NavBar = () => {
         color: `${theme.palette.primary.light}`,
     }
     return (
-        <Box backgroundColor="transparent">
-            <Box backgroundColor={theme.palette.primary.main} color={"#fff"} p={2} textAlign={"center"}>
-                <Typography variant="subtitle2" > The health and well-being of our patients and their health care team will always be our priority, so we follow the best practices for cleanliness.</Typography>
-            </Box>
-            <Box display={"flex"} justifyContent={"space-evenly"} alignItems={"center"} p={2}>
+            <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"} p={2}>
                 <Link to={"/home"} style={{ marginLeft: 0 }}><img src={Logo} alt="Medify LOGO" /></Link>
                 <Box display={"flex"} gap={4} alignItems={"center"} >
                     <Link to={"/search"} style={linkStyle}>Find Doctors</Link>
@@ -33,7 +29,6 @@ const NavBar = () => {
                     </Button>
                 </Box>
             </Box>
-        </Box>
     )
 }
 
