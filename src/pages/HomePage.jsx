@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import NavBar from '../components/NavBar/NavBar';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import SwiperImg1 from '../assets/swiper1.png';
+import SwiperImg2 from '../assets/swiper2.png';
+import SwiperImg3 from '../assets/swiper3.png';
+import { Card, Grid2 as Grid } from '@mui/material';
 import {
   Box,
   Button,
@@ -18,6 +23,17 @@ import LabImage from '../assets/lab.png';
 import HospitalImage from '../assets/hospital.png';
 import MedicineImage from '../assets/medicine.png';
 import AmbulanceImage from '../assets/ambulance.png';
+import SethescopeImg from '../assets/sethescope.png';
+import CardioImg from '../assets/cardio.png';
+import MriImg from '../assets/mri.png';
+import PshycoImg from '../assets/pshycologist.png';
+import BloodImg from '../assets/blood.png';
+import XrayImg from '../assets/xray.png';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const HomePage = () => {
   let theme = useTheme();
@@ -40,11 +56,11 @@ const HomePage = () => {
         </Typography>
       </Box>
       {/* hero section" */}
-      <Box width={'90%'} mx={'auto'} position={'relative'}>
+      <Box width={'80%'} mx={'auto'} my={4}>
         {/* navbar */}
         <NavBar />
         <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
-          <Box width={'50%'} height={'500px'}>
+          <Box width={'50%'}>
             <Typography variant='h5' color='#102851'>
               Skip the travel! Find Online Medical Centers
             </Typography>
@@ -71,21 +87,29 @@ const HomePage = () => {
               <Typography color='#fff'>Find Centers</Typography>
             </Button>
           </Box>
-          <Box width={'50%'}>
-            <img src={HeroImage} alt='hero image' />
+          <Box width={'50%'} height={'500px'}>
+            <img
+              src={HeroImage}
+              alt='hero image'
+              width={'100%'}
+              height={'auto'}
+            />
           </Box>
         </Box>
       </Box>
       {/* search section */}
       <Box
-        width={'90%'}
+        width={'80%'}
         mx={'auto'}
+        // marginTop={0}
         backgroundColor={'#fff'}
         padding={4}
         borderRadius={'8px'}
-        position={'relative'}
-        top={'-270px'}
         boxShadow={'rgba(0, 0, 0, 0.24) 0px 3px 8px'}
+        marginBottom={'20px'}
+        position={'relative'}
+        zIndex={1}
+        marginTop={'-100px'}
       >
         <Box
           display={'flex'}
@@ -235,7 +259,205 @@ const HomePage = () => {
       </Box>
 
       {/* discount carousel */}
+      <Box backgroundColor={'#fff'} padding={'2rem 0'}>
+        <Box width={'80%'} margin={'0 auto'} backgroundColor={'#fff'}>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar]}
+            spaceBetween={50}
+            slidesPerView={3}
+            // navigation
+            pagination={{
+              clickable: true,
+            }}
+            // scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log('slide change')}
+            style={{
+              '--swiper-pagination-bottom': '0px',
+              '--swiper-pagination-color': '#2AA7FF',
+              paddingBottom: '40px',
+            }}
+          >
+            <SwiperSlide>
+              <Box>
+                <img
+                  src={SwiperImg1}
+                  alt='discount'
+                  width={'100%'}
+                  height={'100%'}
+                />
+              </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Box>
+                <img
+                  src={SwiperImg2}
+                  alt='discount'
+                  width={'100%'}
+                  height={'100%'}
+                />
+              </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Box>
+                <img
+                  src={SwiperImg3}
+                  alt='discount'
+                  width={'100%'}
+                  height={'100%'}
+                />
+              </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Box>
+                <img
+                  src={SwiperImg1}
+                  alt='discount'
+                  width={'100%'}
+                  height={'100%'}
+                />
+              </Box>
+            </SwiperSlide>
+          </Swiper>
+        </Box>
+      </Box>
+
       {/* specialisation section */}
+      <Box>
+        <Box padding={'2rem 0'} textAlign={'center'}>
+          <Typography variant='h4' color={'#102851'} fontWeight={'bold'}>
+            Find By Specialisation
+          </Typography>
+        </Box>
+        <Box width={'50%'} margin={'40px auto'}>
+          <Grid container spacing={3}>
+            {/* First Row */}
+            <Grid item xs={12} sm={6} md={3} lg={2}>
+              <Card sx={{ minHeight: 100, p: 4 ,width:270}}>
+                <img src={LabImage} alt='Lab' height={'75px'} width={'75px'} />
+                <Typography
+                  variant='subtitle2'
+                  textAlign={'center'}
+                  color='#ABB6C7'
+                >
+                  Dentistry
+                </Typography>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={2}>
+              <Card sx={{ minHeight: 100, p: 4, minwidth: 100 }}>
+                <img
+                  src={SethescopeImg}
+                  alt='Sethescope'
+                  height={'75px'}
+                  width={'75px'}
+                />
+                <Typography
+                  variant='subtitle2'
+                  textAlign={'center'}
+                  color='#ABB6C7'
+                >
+                  Primary Care
+                </Typography>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={2}>
+              <Card sx={{ minHeight: 100, p: 4 }}>
+                <img
+                  src={CardioImg}
+                  alt='Cardio'
+                  height={'75px'}
+                  width={'75px'}
+                />
+                <Typography
+                  variant='subtitle2'
+                  textAlign={'center'}
+                  color='#ABB6C7'
+                >
+                  Cardiology
+                </Typography>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={2}>
+              <Card sx={{ minHeight: 100, p: 4 }}>
+                <img src={MriImg} alt='Mri' height={'75px'} width={'75px'} />
+                <Typography
+                  variant='subtitle2'
+                  textAlign={'center'}
+                  color='#ABB6C7'
+                >
+                  MRI resonance
+                </Typography>
+              </Card>
+            </Grid>
+
+            {/* Second Row */}
+            <Grid item xs={12} sm={6} md={3} lg={2}>
+              <Card sx={{ minHeight: 100, p: 4 }}>
+                <img
+                  src={BloodImg}
+                  alt='blood'
+                  height={'75px'}
+                  width={'75px'}
+                />
+                <Typography
+                  variant='subtitle2'
+                  textAlign={'center'}
+                  color='#ABB6C7'
+                >
+                  Blood Test
+                </Typography>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={2}>
+              <Card sx={{ minHeight: 100, p: 4 }}>
+                <img
+                  src={PshycoImg}
+                  alt='Phsyco'
+                  height={'75px'}
+                  width={'75px'}
+                />
+                <Typography
+                  variant='subtitle2'
+                  textAlign={'center'}
+                  color='#ABB6C7'
+                >
+                  Physcologist
+                </Typography>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={2}>
+              <Card sx={{ minHeight: 100, p: 4 }}>
+                <img
+                  src={LabImage}
+                  alt='Laboratory'
+                  height={'75px'}
+                  width={'75px'}
+                />
+                <Typography
+                  variant='subtitle2'
+                  textAlign={'center'}
+                  color='#ABB6C7'
+                >
+                  Laboaratory
+                </Typography>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} lg={2}>
+              <Card sx={{ minHeight: 100, p: 4 }}>
+                <img src={XrayImg} alt='xray' height={'75px'} width={'75px'} />
+                <Typography
+                  variant='subtitle2'
+                  textAlign={'center'}
+                  color='#ABB6C7'
+                >
+                  X-Ray
+                </Typography>
+              </Card>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
       {/* medical specialist section */}
       {/* goal section */}
       {/* news section */}
