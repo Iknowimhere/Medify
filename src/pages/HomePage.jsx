@@ -4,7 +4,13 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import SwiperImg1 from '../assets/swiper1.png';
 import SwiperImg2 from '../assets/swiper2.png';
 import SwiperImg3 from '../assets/swiper3.png';
-import { Card, Grid2 as Grid } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid2 as Grid,
+} from '@mui/material';
 import {
   Box,
   Button,
@@ -29,11 +35,57 @@ import MriImg from '../assets/mri.png';
 import PshycoImg from '../assets/pshycologist.png';
 import BloodImg from '../assets/blood.png';
 import XrayImg from '../assets/xray.png';
+import ahmadImg from '../assets/carousel/ahmad.png';
+import ankurImg from '../assets/carousel/ankur.png';
+import hullImg from '../assets/carousel/hull.png';
+import kenImg from '../assets/carousel/ken.png';
+import saraImg from '../assets/carousel/sara.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { styled } from '@mui/material/styles';
+
+const CardContainer = styled(Box)({
+  textAlign: 'center',
+  padding: '16px',
+  borderRadius: '8px',
+  backgroundColor: '#f8faff',
+  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  '&:hover': {
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)',
+  },
+});
+
+const Image = styled('img')({
+  width: '64px',
+  height: '64px',
+  marginBottom: '16px',
+});
+
+const specialists = [
+  {
+    name: 'Dr. John Doe',
+    designation: 'Medicine',
+    img: ahmadImg,
+  },
+  {
+    name: 'Dr. Manoj Khanna',
+    designation: 'Neurologist',
+    img: ankurImg,
+  },
+  {
+    name: 'Dr. Neetu Gokhale',
+    designation: 'Orthopaedics',
+    img: saraImg,
+  },
+  {
+    name: 'Dr. Ankur Sharma',
+    designation: 'Medicine',
+    img: kenImg,
+  },
+];
 
 const HomePage = () => {
   let theme = useTheme();
@@ -324,141 +376,166 @@ const HomePage = () => {
 
       {/* specialisation section */}
       <Box>
-        <Box padding={'2rem 0'} textAlign={'center'}>
-          <Typography variant='h4' color={'#102851'} fontWeight={'bold'}>
+        <Box sx={{ padding: '24px', backgroundColor: '#eef4fc' }}>
+          <Typography
+            variant='h4'
+            textAlign='center'
+            fontWeight='bold'
+            color='#003366'
+            mb={4}
+          >
             Find By Specialisation
           </Typography>
-        </Box>
-        <Box width={'50%'} margin={'40px auto'}>
-          <Grid container spacing={3}>
-            {/* First Row */}
-            <Grid item xs={12} sm={6} md={3} lg={2}>
-              <Card sx={{ minHeight: 100, p: 4 ,width:270}}>
-                <img src={LabImage} alt='Lab' height={'75px'} width={'75px'} />
-                <Typography
-                  variant='subtitle2'
-                  textAlign={'center'}
-                  color='#ABB6C7'
-                >
+          <Grid container spacing={3} justifyContent='center'>
+            <Grid item xs={12} sm={6} md={3}>
+              <CardContainer>
+                <Image src={LabImage} alt='Dentistry' />
+                <Typography variant='h6' color='#4a4a4a'>
                   Dentistry
                 </Typography>
-              </Card>
+              </CardContainer>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={2}>
-              <Card sx={{ minHeight: 100, p: 4, minwidth: 100 }}>
-                <img
-                  src={SethescopeImg}
-                  alt='Sethescope'
-                  height={'75px'}
-                  width={'75px'}
-                />
-                <Typography
-                  variant='subtitle2'
-                  textAlign={'center'}
-                  color='#ABB6C7'
-                >
+            <Grid item xs={12} sm={6} md={3}>
+              <CardContainer>
+                <Image src={SethescopeImg} alt='Primary Care' />
+                <Typography variant='h6' color='#4a4a4a'>
                   Primary Care
                 </Typography>
-              </Card>
+              </CardContainer>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={2}>
-              <Card sx={{ minHeight: 100, p: 4 }}>
-                <img
-                  src={CardioImg}
-                  alt='Cardio'
-                  height={'75px'}
-                  width={'75px'}
-                />
-                <Typography
-                  variant='subtitle2'
-                  textAlign={'center'}
-                  color='#ABB6C7'
-                >
+            <Grid item xs={12} sm={6} md={3}>
+              <CardContainer>
+                <Image src={CardioImg} alt='Cardiology' />
+                <Typography variant='h6' color='#4a4a4a'>
                   Cardiology
                 </Typography>
-              </Card>
+              </CardContainer>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={2}>
-              <Card sx={{ minHeight: 100, p: 4 }}>
-                <img src={MriImg} alt='Mri' height={'75px'} width={'75px'} />
-                <Typography
-                  variant='subtitle2'
-                  textAlign={'center'}
-                  color='#ABB6C7'
-                >
-                  MRI resonance
+            <Grid item xs={12} sm={6} md={3}>
+              <CardContainer>
+                <Image src={MriImg} alt='MRI Resonance' />
+                <Typography variant='h6' color='#4a4a4a'>
+                  MRI Resonance
                 </Typography>
-              </Card>
+              </CardContainer>
             </Grid>
-
-            {/* Second Row */}
-            <Grid item xs={12} sm={6} md={3} lg={2}>
-              <Card sx={{ minHeight: 100, p: 4 }}>
-                <img
-                  src={BloodImg}
-                  alt='blood'
-                  height={'75px'}
-                  width={'75px'}
-                />
-                <Typography
-                  variant='subtitle2'
-                  textAlign={'center'}
-                  color='#ABB6C7'
-                >
+            <Grid item xs={12} sm={6} md={3}>
+              <CardContainer>
+                <Image src={BloodImg} alt='Blood Test' />
+                <Typography variant='h6' color='#4a4a4a'>
                   Blood Test
                 </Typography>
-              </Card>
+              </CardContainer>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={2}>
-              <Card sx={{ minHeight: 100, p: 4 }}>
-                <img
-                  src={PshycoImg}
-                  alt='Phsyco'
-                  height={'75px'}
-                  width={'75px'}
-                />
-                <Typography
-                  variant='subtitle2'
-                  textAlign={'center'}
-                  color='#ABB6C7'
-                >
-                  Physcologist
+            <Grid item xs={12} sm={6} md={3}>
+              <CardContainer>
+                <Image src={PshycoImg} alt='Psicologist' />
+                <Typography variant='h6' color='#4a4a4a'>
+                  Psicologist
                 </Typography>
-              </Card>
+              </CardContainer>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={2}>
-              <Card sx={{ minHeight: 100, p: 4 }}>
-                <img
-                  src={LabImage}
-                  alt='Laboratory'
-                  height={'75px'}
-                  width={'75px'}
-                />
-                <Typography
-                  variant='subtitle2'
-                  textAlign={'center'}
-                  color='#ABB6C7'
-                >
-                  Laboaratory
+            <Grid item xs={12} sm={6} md={3}>
+              <CardContainer>
+                <Image src={LabImage} alt='Laboratory' />
+                <Typography variant='h6' color='#4a4a4a'>
+                  Laboratory
                 </Typography>
-              </Card>
+              </CardContainer>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} lg={2}>
-              <Card sx={{ minHeight: 100, p: 4 }}>
-                <img src={XrayImg} alt='xray' height={'75px'} width={'75px'} />
-                <Typography
-                  variant='subtitle2'
-                  textAlign={'center'}
-                  color='#ABB6C7'
-                >
+            <Grid item xs={12} sm={6} md={3}>
+              <CardContainer>
+                <Image src={XrayImg} alt='X-Ray' />
+                <Typography variant='h6' color='#4a4a4a'>
                   X-Ray
                 </Typography>
-              </Card>
+              </CardContainer>
             </Grid>
           </Grid>
         </Box>
       </Box>
       {/* medical specialist section */}
+      <Box sx={{ backgroundColor: '#eef4fc', py: 5 }}>
+        <Container maxWidth='lg'>
+          {/* Section Title */}
+          <Typography
+            variant='h4'
+            component='h2'
+            sx={{
+              color: '#003366',
+              fontWeight: 'bold',
+              textAlign: 'center',
+              mb: 5,
+            }}
+          >
+            Our Medical Specialist
+          </Typography>
+
+          {/* Swiper Carousel */}
+          <Swiper
+            modules={[Pagination]}
+            spaceBetween={20}
+            slidesPerView={3}
+            pagination={{ clickable: true }}
+            breakpoints={{
+              320: { slidesPerView: 1 },
+              600: { slidesPerView: 2 },
+              960: { slidesPerView: 3 },
+              1200: { slidesPerView: 3 },
+            }}
+          >
+            {/* Hardcoded Cards */}
+            {specialists.map((specialist, index) => (
+              <SwiperSlide key={index}>
+                <Card
+                  sx={{
+                    maxWidth: 280,
+                    height: 350,
+                    mx: 'auto',
+                    borderRadius: 3,
+                    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+                    textAlign: 'center',
+                    backgroundColor: '#ffffff',
+                  }}
+                >
+                  <CardMedia
+                    component='img'
+                    alt={specialist.name}
+                    image={specialist.img} // Replace with actual image URL
+                    sx={{
+                      width: 120,
+                      height: 120,
+                      margin: '16px auto',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      border: '4px solid #eef4fc',
+                    }}
+                  />
+                  <CardContent>
+                    <Typography
+                      variant='h6'
+                      sx={{
+                        fontWeight: 'bold',
+                        color: '#003366',
+                        mb: 1,
+                      }}
+                    >
+                      {specialist.name}
+                    </Typography>
+                    <Typography
+                      variant='body2'
+                      color='text.secondary'
+                      sx={{ fontSize: '0.9rem' }}
+                    >
+                      {specialist.designation}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Container>
+      </Box>
       {/* goal section */}
       {/* news section */}
       {/* stats section */}
