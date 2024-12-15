@@ -4,13 +4,8 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import SwiperImg1 from '../assets/swiper1.png';
 import SwiperImg2 from '../assets/swiper2.png';
 import SwiperImg3 from '../assets/swiper3.png';
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid2 as Grid,
-} from '@mui/material';
+import { Card, Grid2 as Grid, List, ListItem, ListItemIcon } from '@mui/material';
+import ankushImg from '../assets/PngItem_1939059 1.png'
 import {
   Box,
   Button,
@@ -23,7 +18,7 @@ import {
 } from '@mui/material';
 import HeroImage from '../assets/hero_image.png';
 import { useTheme } from '@emotion/react';
-import { Search } from '@mui/icons-material';
+import { Search, Verified } from '@mui/icons-material';
 import DoctorImage from '../assets/doctor.png';
 import LabImage from '../assets/lab.png';
 import HospitalImage from '../assets/hospital.png';
@@ -45,47 +40,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { styled } from '@mui/material/styles';
-
-const CardContainer = styled(Box)({
-  textAlign: 'center',
-  padding: '16px',
-  borderRadius: '8px',
-  backgroundColor: '#f8faff',
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  '&:hover': {
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)',
-  },
-});
-
-const Image = styled('img')({
-  width: '64px',
-  height: '64px',
-  marginBottom: '16px',
-});
-
-const specialists = [
-  {
-    name: 'Dr. John Doe',
-    designation: 'Medicine',
-    img: ahmadImg,
-  },
-  {
-    name: 'Dr. Manoj Khanna',
-    designation: 'Neurologist',
-    img: ankurImg,
-  },
-  {
-    name: 'Dr. Neetu Gokhale',
-    designation: 'Orthopaedics',
-    img: saraImg,
-  },
-  {
-    name: 'Dr. Ankur Sharma',
-    designation: 'Medicine',
-    img: kenImg,
-  },
-];
+import VerifiedIcon from '@mui/icons-material/Verified';
 
 const HomePage = () => {
   let theme = useTheme();
@@ -386,11 +341,18 @@ const HomePage = () => {
           >
             Find By Specialisation
           </Typography>
-          <Grid container spacing={3} justifyContent='center'>
-            <Grid item xs={12} sm={6} md={3}>
-              <CardContainer>
-                <Image src={LabImage} alt='Dentistry' />
-                <Typography variant='h6' color='#4a4a4a'>
+        </Box>
+        <Box width={'50%'} margin={'40px auto'}>
+          <Grid container spacing={3}>
+            {/* First Row */}
+            <Grid item xs={12} sm={6} md={3} lg={2}>
+              <Card sx={{ minHeight: 100, p: 4 }}>
+                <img src={LabImage} alt='Lab' height={'75px'} width={'75px'} />
+                <Typography
+                  variant='subtitle2'
+                  textAlign={'center'}
+                  color='#ABB6C7'
+                >
                   Dentistry
                 </Typography>
               </CardContainer>
@@ -453,90 +415,300 @@ const HomePage = () => {
             </Grid>
           </Grid>
         </Box>
+        <Box padding={'1rem 0'} textAlign={'center'}>
+          <Button variant="contained" color='primary' style={{ color: '#fff' }}>View all</Button>
+        </Box>
       </Box>
       {/* medical specialist section */}
-      <Box sx={{ backgroundColor: '#eef4fc', py: 5 }}>
-        <Container maxWidth='lg'>
-          {/* Section Title */}
-          <Typography
-            variant='h4'
-            component='h2'
-            sx={{
-              color: '#003366',
-              fontWeight: 'bold',
-              textAlign: 'center',
-              mb: 5,
-            }}
-          >
-            Our Medical Specialist
-          </Typography>
-
-          {/* Swiper Carousel */}
+      <Box backgroundColor="#fff" padding={'2rem 0'} textAlign={'center'}>
+        <Box padding={'1rem 0'}>
+          <Typography variant='h4' color={'#102851'} fontWeight={'bold'}>Our Medical Specialists</Typography>
+        </Box>
+        <Box width={'100%'} margin={'0 auto'} backgroundColor={'#fff'}>
           <Swiper
-            modules={[Pagination]}
-            spaceBetween={20}
-            slidesPerView={3}
-            pagination={{ clickable: true }}
-            breakpoints={{
-              320: { slidesPerView: 1 },
-              600: { slidesPerView: 2 },
-              960: { slidesPerView: 3 },
-              1200: { slidesPerView: 3 },
+            modules={[Navigation, Pagination, Scrollbar]}
+            // spaceBetween={10}
+            slidesPerView={4}
+            // navigation
+            pagination={{
+              clickable: true,
+            }}
+            // scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log('slide change')}
+            style={{
+              '--swiper-pagination-bottom': '0px',
+              '--swiper-pagination-color': '#2AA7FF',
+              paddingBottom: '40px',
             }}
           >
-            {/* Hardcoded Cards */}
-            {specialists.map((specialist, index) => (
-              <SwiperSlide key={index}>
-                <Card
-                  sx={{
-                    maxWidth: 280,
-                    height: 350,
-                    mx: 'auto',
-                    borderRadius: 3,
-                    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-                    textAlign: 'center',
-                    backgroundColor: '#ffffff',
-                  }}
-                >
-                  <CardMedia
-                    component='img'
-                    alt={specialist.name}
-                    image={specialist.img} // Replace with actual image URL
+            <SwiperSlide>
+              <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
+                <Box position="relative" width="60%">
+                  <Box
                     sx={{
-                      width: 120,
-                      height: 120,
-                      margin: '16px auto',
-                      borderRadius: '50%',
-                      objectFit: 'cover',
-                      border: '4px solid #eef4fc',
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      background: `linear-gradient(144.2deg, #E1F3FF 0%, #2AA7FF 100%)`,
+                      padding: '1em',
+                      borderTopLeftRadius: '250px',
+                      borderTopRightRadius: '250px',
+                      height: '100%',
+                      width: '100%',
+                      zIndex: 1,
+                      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
                     }}
                   />
-                  <CardContent>
-                    <Typography
-                      variant='h6'
-                      sx={{
-                        fontWeight: 'bold',
-                        color: '#003366',
-                        mb: 1,
+                  <Box
+                    sx={{
+                      position: "relative",
+                      zIndex: 2,
+                      padding: '1em',
+                      width: '100%'
+                    }}
+                  >
+                    <img
+                      src={ankushImg}
+                      alt=""
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'block'
                       }}
-                    >
-                      {specialist.name}
-                    </Typography>
-                    <Typography
-                      variant='body2'
-                      color='text.secondary'
-                      sx={{ fontSize: '0.9rem' }}
-                    >
-                      {specialist.designation}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </SwiperSlide>
-            ))}
+                    />
+                  </Box>
+                </Box>
+                <Box textAlign={'center'} marginTop={'2rem'}>
+                  <Typography variant="subtitle1" color={'#102851'}> Dr. Ankush</Typography>
+                  <Typography variant="subtitle1" color='primary'> Cardiologist</Typography>
+                </Box>
+              </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
+                <Box position="relative" width="60%">
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      background: `linear-gradient(144.2deg, #E1F3FF 0%, #2AA7FF 100%)`,
+                      padding: '1em',
+                      borderTopLeftRadius: '250px',
+                      borderTopRightRadius: '250px',
+                      height: '100%',
+                      width: '100%',
+                      zIndex: 1,
+                      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: "relative",
+                      zIndex: 2,
+                      padding: '1em',
+                      width: '100%'
+                    }}
+                  >
+                    <img
+                      src={ankushImg}
+                      alt=""
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'block'
+                      }}
+                    />
+                  </Box>
+                </Box>
+                <Box textAlign={'center'} marginTop={'2rem'}>
+                  <Typography variant="subtitle1" color={'#102851'}> Dr. Ankush</Typography>
+                  <Typography variant="subtitle1" color='primary'> Cardiologist</Typography>
+                </Box>
+              </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
+                <Box position="relative" width="60%"  >
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      background: `linear-gradient(144.2deg, #E1F3FF 0%, #2AA7FF 100%)`,
+                      padding: '1em',
+                      borderTopLeftRadius: '250px',
+                      borderTopRightRadius: '250px',
+                      height: '100%',
+                      width: '100%',
+                      zIndex: 1,
+                      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: "relative",
+                      zIndex: 2,
+                      padding: '1em',
+                      width: '100%'
+                    }}
+                  >
+                    <img
+                      src={ankushImg}
+                      alt=""
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'block'
+                      }}
+                    />
+                  </Box>
+                </Box>
+                <Box textAlign={'center'} marginTop={'2rem'}>
+                  <Typography variant="subtitle1" color={'#102851'}> Dr. Ankush</Typography>
+                  <Typography variant="subtitle1" color='primary'> Cardiologist</Typography>
+                </Box>
+              </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
+                <Box position="relative" width="60%">
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      background: `linear-gradient(144.2deg, #E1F3FF 0%, #2AA7FF 100%)`,
+                      padding: '1em',
+                      borderTopLeftRadius: '250px',
+                      borderTopRightRadius: '250px',
+                      height: '100%',
+                      width: '100%',
+                      zIndex: 1,
+                      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: "relative",
+                      zIndex: 2,
+                      padding: '1em',
+                      width: '100%'
+                    }}
+                  >
+                    <img
+                      src={ankushImg}
+                      alt=""
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'block'
+                      }}
+                    />
+                  </Box>
+                </Box>
+                <Box textAlign={'center'} marginTop={'2rem'}>
+                  <Typography variant="subtitle1" color={'#102851'}> Dr. Ankush</Typography>
+                  <Typography variant="subtitle1" color='primary'> Cardiologist</Typography>
+                </Box>
+              </Box>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'}>
+                <Box position="relative" width="60%">
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      background: `linear-gradient(144.2deg, #E1F3FF 0%, #2AA7FF 100%)`,
+                      padding: '1em',
+                      borderTopLeftRadius: '250px',
+                      borderTopRightRadius: '250px',
+                      height: '100%',
+                      width: '100%',
+                      zIndex: 1,
+                      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: "relative",
+                      zIndex: 2,
+                      padding: '1em',
+                      width: '100%'
+                    }}
+                  >
+                    <img
+                      src={ankushImg}
+                      alt=""
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'block'
+                      }}
+                    />
+                  </Box>
+                </Box>
+                <Box textAlign={'center'} marginTop={'2rem'}>
+                  <Typography variant="subtitle1" color={'#102851'}> Dr. Ankush</Typography>
+                  <Typography variant="subtitle1" color='primary'> Cardiologist</Typography>
+                </Box>
+              </Box>
+            </SwiperSlide>
           </Swiper>
-        </Container>
+        </Box>
       </Box>
       {/* goal section */}
+      <Box>
+        {/* image section */}
+        <Box>
+          {/* image1  */}
+          <Box>
+            <img src="" alt="" />
+          </Box>
+          {/* image2  */}
+          <Box>
+            <img src="" alt="" />
+          </Box>
+        </Box>
+        {/* text section */}
+        <Box>
+          <Typography variant="subtitle2" color={'rgba(42, 167, 255, 1)'} >HELPING PATIENTS FROM AROUND THE GLOBE!!</Typography>
+          <Typography variant="h4" color={'#102851'} fontWeight={'bold'}>
+            Patient <i style={{ fontStyle: 'normal', color: 'rgba(42, 167, 255, 1)' }}>Caring</i>
+          </Typography>
+          <Typography variant="subtitle1" color={'rgba(119, 130, 157, 1)'}>
+            Our goal is to deliver quality of care in a courteous, respectful, and compassionate manner. We hope you will allow us to care for you and strive to be the first and best choice for healthcare.
+          </Typography>
+          <List>
+            <ListItem>
+              <ListItemIcon>
+                <VerifiedIcon color="primary" />
+              </ListItemIcon>
+              <Typography variant="subtitle1" color={'rgba(27, 60, 116, 1)'}>Stay Updated About Your Health</Typography>
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <VerifiedIcon color="primary" />
+              </ListItemIcon>
+              <Typography variant="subtitle1" color={'rgba(27, 60, 116, 1)'}>Check Your Results Online</Typography>
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <VerifiedIcon color="primary" />
+              </ListItemIcon>
+              <Typography variant="subtitle1" color={'rgba(27, 60, 116, 1)'}>Manage Your Appointments</Typography>
+            </ListItem>
+          </List>
+        </Box>
+      </Box>
       {/* news section */}
       {/* stats section */}
       {/* footer section */}
